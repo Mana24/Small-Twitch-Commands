@@ -1,0 +1,14 @@
+{
+  "name": "Small Chats",
+  "description": "WIP",
+  "version": "0.1",
+  "manifest_version": 3,
+  "content_scripts": [
+    {
+      "matches": ["https://*.twitch.tv/*"],
+      "css": ["content-styles.css"],
+      "js": ["content-script.js"]
+    }
+  ],
+  "permissions": ["storage"]
+}
