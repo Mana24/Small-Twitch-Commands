@@ -33,7 +33,7 @@ const onObserve = (records) => {
   //   records.forEach(record => record.addedNodes?.forEach((node) => log(node.classList?.contains('chat-line__message'))))
   records.forEach((record) => {
     record.addedNodes?.forEach((node) => {
-      if (node.classList?.contains("chat-line__message")) {
+      if (node.classList?.contains("chat-line__message") || node.classList?.contains("vod-message")) {
         processNewMessageNode(node);
       }
     });
