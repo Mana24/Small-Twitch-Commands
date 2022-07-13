@@ -8,7 +8,7 @@ function log(msg) {
  * @returns {Boolean}
  */
 function isCommand(text) {
-  return text && text.startsWith("!");
+  return text && text.trim().startsWith("!");
 }
 
 log("Started");
@@ -17,13 +17,13 @@ log("Started");
  * @param {Node} node
  */
 processNewMessageNode = (node) => {
-   log("New chat message");
-   // log(node.querySelector('.message')?.textContent)
-   if (isCommand(node.querySelector('.message')?.textContent)) {
-      log('it\'s a command')
-      node.classList.add('SC-command')
-   }
-}
+  //  log("New chat message");
+  // log(node.querySelector('.message')?.textContent)
+  if (isCommand(node.querySelector(".message")?.firstChild?.textContent)) {
+    log("chat command detected");
+    node.classList.add("SC-command");
+  }
+};
 
 /**
  * @param {[MutationRecord]} records
@@ -33,13 +33,12 @@ const onObserve = (records) => {
   //   records.forEach(record => record.addedNodes?.forEach((node) => log(node.classList?.contains('chat-line__message'))))
   records.forEach((record) => {
     record.addedNodes?.forEach((node) => {
-      if(node.classList?.contains('chat-line__message')) {
-         processNewMessageNode(node);
+      if (node.classList?.contains("chat-line__message")) {
+        processNewMessageNode(node);
       }
     });
   });
 };
-
 
 const observer = new MutationObserver(onObserve);
 

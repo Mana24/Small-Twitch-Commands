@@ -1,0 +1,8 @@
+.SC-command {
+   font-size: 80%;
+   color: var(--color-text-alt-2);
+}
+
+.SC-command .chat-line__message--badges > * {
+   transform: scale(0.8);
+}
