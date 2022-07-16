@@ -2,13 +2,29 @@ function log(msg) {
   console.log("SC: ", msg);
 }
 
+let SmallifyUsersList = ["plastic_sr", "mana248"];
+
 /**
- * Determins wether a message is a command or not
+ * Determins wether a string is a command or not
  * @param {String} text
  * @returns {Boolean}
  */
 function isCommand(text) {
   return text && text.trim().startsWith("!");
+}
+
+/**
+ * @param {Node} node
+ * @param {Array} smallUsers
+ * @returns {Boolean}
+ */
+function isSmallifiedUserList(node, smallUsers) {
+  const userNameNode = node.querySelector(".chat-author__display-name");
+  if (!userNameNode) return false;
+
+  const userName = userNameNode.textContent.trim().toLowerCase();
+  
+  return smallUsers.includes(userName);
 }
 
 log("Started");
@@ -19,9 +35,15 @@ log("Started");
 processNewMessageNode = (node) => {
   //  log("New chat message");
   // log(node.querySelector('.message')?.textContent)
+  // log(node.attributes)
+  if (isSmallifiedUserList(node, SmallifyUsersList)) {
+    log("Always small user detected");
+    node.classList.add("SC-small");
+    return;
+  }
   if (isCommand(node.querySelector(".message")?.firstChild?.textContent)) {
     log("chat command detected");
-    node.classList.add("SC-command");
+    node.classList.add("SC-small");
   }
 };
 
@@ -37,7 +59,7 @@ const onObserve = (records) => {
       if (!node.querySelector) return;
       // This looks really ugly. I am sorry.
       // If querySelector-ing a node could catch itself this would look
-      // way more elegant  
+      // way more elegant
       let messageNode =
         node.querySelector(".vod-message") ||
         (node.classList?.contains("chat-line__message") ? node : undefined);
