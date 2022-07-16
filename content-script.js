@@ -2,7 +2,8 @@ function log(msg) {
   console.log("SC: ", msg);
 }
 
-let SmallifyUsersList = ["plastic_sr", "mana248"];
+let SmallifyUsersList = ["plastic_sr"];
+let exemptCommandsList = ['!lurk']
 
 /**
  * Determins wether a string is a command or not
@@ -11,6 +12,18 @@ let SmallifyUsersList = ["plastic_sr", "mana248"];
  */
 function isCommand(text) {
   return text && text.trim().startsWith("!");
+}
+
+/**
+ * 
+ * @param {String} text 
+ * @param {Array} exemptCommands
+ * @returns {Boolean} 
+ */
+function isExemptCommand(text, exemptCommands) {
+  const firstWord = text.split(' ')[0].trim().toLowerCase();
+  // log(firstWord);
+  return exemptCommands.includes(firstWord);
 }
 
 /**
@@ -41,8 +54,15 @@ processNewMessageNode = (node) => {
     node.classList.add("SC-small");
     return;
   }
-  if (isCommand(node.querySelector(".message")?.firstChild?.textContent)) {
+
+  const messageContent = node.querySelector(".message")?.firstChild?.textContent;
+
+  if (isCommand(messageContent)) {
     log("chat command detected");
+    if (isExemptCommand(messageContent, exemptCommandsList)) {
+      log ("it's an exempt command");
+      return;
+    }
     node.classList.add("SC-small");
   }
 };
