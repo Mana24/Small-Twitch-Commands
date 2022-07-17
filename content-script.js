@@ -2,7 +2,7 @@ function log(msg) {
   console.log("SC: ", msg);
 }
 
-let SmallifyUsersList = ["plastic_sr"];
+let SmallifyUsersList = ["boggitbot", "fossabot"];
 let exemptCommandsList = ['!lurk']
 
 /**
