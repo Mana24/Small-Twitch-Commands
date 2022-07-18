@@ -1,27 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Small Chat Options</title>
-   <link rel="stylesheet" href="option-styles.css">
-</head>
-<body>
-   <div class="main-options">
-      <div class="list-container">
-         <ul class="list user-list">
-            <li class="user-list-item">
-               <p class="username">mana</p>
-               <button class="delete-button">X</button>
-            </li>
-         </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Small Chat Options</title>
+    <link rel="stylesheet" href="option-styles.css" />
+  </head>
+  <body>
+    <div class="main-options">
+      <h1 class="title">Small Chat Options</h1>
+      <div class="list-container" id="smallUsers">
+        <h2 class="list-title">Always small users</h2>
+        <ul class="list">
+          <!-- <li class="list-item">
+            <p class="list-item-content">mana</p>
+            <button class="list-item-remove">X</button>
+          </li> -->
+        </ul>
+        <form class="list-controls">
+         <input type="text" name="user-name">
+         <button>Add</button>
+        </form>
+      </div>
+      <div class="list-container" id="exemptCommands">
+        <h2 class="list-title">Exempt Commands</h2>
+        <ul class="list">
+          <!-- <li class="list-item">
+            <p class="list-item-content">mana</p>
+            <button class="list-item-remove">X</button>
+          </li> -->
+        </ul>
+        <form class="list-controls">
+         <input type="text" name="command-name">
+         <button>Add</button>
+        </form>
       </div>
       <div class="main-controls">
-         <button id="save">Save</button>
-         <button id="restore">Restore</button>
+        <button id="restore">Restore</button>
+        <!-- <button id="debug">Debug</button> -->
+        <!-- <button id="clear">Clear</button> -->
       </div>
-   </div>
-   <script src="options.js"></script>
-</body>
+    </div>
+    <script src="options-utils.js"></script>
+    <script src="options.js"></script>
+  </body>
 </html>
