@@ -70,9 +70,9 @@ async function initalizeList(key, listContainer) {
 		const input = itemAddForm.querySelector('input');
 		const inputValue = input.value.trim().toLowerCase();
 		if (inputValue) {
+			input.value = ""
 			const newItem = await addStorageItem(key, inputValue);
 			addListItem(inputValue, ul, () => removeStorageItem(key, newItem.id));
-			input.value = ""
 		}
 	});
 }
