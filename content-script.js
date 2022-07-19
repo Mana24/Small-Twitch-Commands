@@ -2,8 +2,14 @@ function log(msg) {
   console.log("SC: ", msg);
 }
 
-let SmallifyUsersList = ["boggitbot", "fossabot"];
-let exemptCommandsList = ['!lurk']
+let SmallifyUsersList = [];
+let exemptCommandsList = [];
+
+function storageGet(keys) {
+  return new Promise((resolve, reject) => {
+     chrome.storage.sync.get(keys, resolve);
+  })
+}
 
 /**
  * Determins wether a string is a command or not
@@ -90,7 +96,12 @@ const onObserve = (records) => {
 
 const observer = new MutationObserver(onObserve);
 
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
+  const options = await storageGet();
+
+  SmallifyUsersList = options.smallUsers?.map(item => item.content) || [];
+  exemptCommandsList = options.exemptCommands?.map(item => item.content) || [];
+
   observer.observe(document.body, {
     childList: true,
     subtree: true,
