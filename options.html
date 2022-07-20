@@ -10,41 +10,45 @@
   <body>
     <div class="main-options">
       <h1 class="title">Small Chat Options</h1>
-      <div class="list-container" id="smallUsers">
-        <h2 class="list-title">Always small users</h2>
-        <p class="list-description">
-          Users in this list will have all their messages smallified. 
-          <br>
-          It's meant for bots with repeating messages (e.g. NightBot, StreamElements)
-        </p>
-        <ul class="list">
-          <!-- <li class="list-item">
+      <div class="lists">
+        <div class="list-container" id="smallUsers">
+          <h2 class="list-title">Always small users</h2>
+          <p class="list-description">
+            Users in this list will have all their messages smallified.
+            <br />
+            It's meant for bots with repeating messages (e.g. NightBot,
+            StreamElements)
+          </p>
+          <ul class="list">
+            <!-- <li class="list-item">
             <p class="list-item-content">mana</p>
             <button class="list-item-remove">X</button>
           </li> -->
-        </ul>
-        <form class="list-controls">
-         <input type="text" name="user-name">
-         <button>Add</button>
-        </form>
-      </div>
-      <div class="list-container" id="exemptCommands">
-        <h2 class="list-title">Exempt Commands</h2>
-        <p class="list-description">
-          Commands in this list will never be smallified.
-          <br>
-          it's meant for commands that you don't want to miss (e.g. !lurk going to work. Thanks for the stream)
-        </p>
-        <ul class="list">
-          <!-- <li class="list-item">
+          </ul>
+          <form class="list-controls">
+            <input type="text" name="small-user-name" placeholder="Example: NightBot" />
+            <button>Add</button>
+          </form>
+        </div>
+        <div class="list-container" id="exemptCommands">
+          <h2 class="list-title">Exempt Commands</h2>
+          <p class="list-description">
+            Commands in this list will never be smallified.
+            <br />
+            It's meant for commands that you don't want to miss (e.g. !lurk
+            going to work. Thanks for the stream)
+          </p>
+          <ul class="list">
+            <!-- <li class="list-item">
             <p class="list-item-content">mana</p>
             <button class="list-item-remove">X</button>
           </li> -->
-        </ul>
-        <form class="list-controls">
-         <input type="text" name="command-name">
-         <button>Add</button>
-        </form>
+          </ul>
+          <form class="list-controls">
+            <input type="text" name="command-name" placeholder="Example: !lurk"/>
+            <button>Add</button>
+          </form>
+        </div>
       </div>
       <div class="main-controls">
         <button id="restore">Restore</button>
