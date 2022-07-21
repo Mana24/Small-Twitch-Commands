@@ -1,5 +1,5 @@
 function log(msg) {
-  console.log("SC: ", msg);
+  console.log("STC: ", msg);
 }
 
 let SmallifyUsersList = [];
