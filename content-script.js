@@ -52,7 +52,6 @@ log("Started");
  * @param {Node} node
  */
 processNewMessageNode = (node) => {
-  //  log("New chat message");
   // log(node.querySelector('.message')?.textContent)
   // log(node.attributes)
   if (isSmallifiedUserList(node, SmallifyUsersList)) {
@@ -61,7 +60,8 @@ processNewMessageNode = (node) => {
     return;
   }
 
-  const messageContent = node.querySelector(".message")?.firstChild?.textContent;
+  const messageContent = node.querySelector(".text-fragment:first-child")?.textContent;
+  // log("message content: " + messageContent);
 
   if (isCommand(messageContent)) {
     log("chat command detected");
@@ -83,6 +83,7 @@ const onObserve = (records) => {
     record.addedNodes?.forEach((node) => {
       // log(node.querySelector('.vod-message'));
       if (!node.querySelector) return;
+      
       // This looks really ugly. I am sorry.
       // If querySelector-ing a node could catch itself this would look
       // way more elegant

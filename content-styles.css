@@ -7,7 +7,7 @@
    padding-bottom: 0.2rem;
 }
 
-.SC-small .chat-line__message--badges > * {
+.SC-small .chat-line__message--badges > *, .SC-small .chat-badge {
    transform: scale(0.8);
    transform-origin: left;
 }
