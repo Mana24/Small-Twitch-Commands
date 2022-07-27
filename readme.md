@@ -24,6 +24,7 @@ It can also make all messages by specified users smaller and less distracting
 3. Go to the extensions page of your broswer (chrome://extensions if you're on chrome)
 4. Enable developer mode. It should be a toggle in the extensions page
 5. Click **load unpacked**, and select the folder you extracted in step 2
+<<<<<<< HEAD
 
 ## FAQ
 
@@ -33,4 +34,15 @@ It costs 5$ to put it up on the chrome webstore. I am too cheap to pay that.
 
 ## Acknowledgments 
 
+=======
+
+## FAQ
+
+### Why can't I install this off the chrome webstore
+It costs 5$ to do so. I am too cheap to pay that. 
+
+
+## Acknowledgments 
+
+>>>>>>> 50a02614967567aa386dc65d43fbb79fb9dd0a08
 [SerBoggit](https://www.twitch.tv/serboggit): Thanks to SerBoggit for the idea and the last example picture
