@@ -1,4 +1,5 @@
 import { useState, useEffect } from "preact/hooks";
+import { log } from "../utils.js";
 
 export function ListItem({ content, remove }) {
   return (
@@ -24,11 +25,11 @@ export default function List({
   const handleChange = (e) => setAddInput(e.target.value);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     if (addInput.trim()) {
       addItem(addInput.trim().toLowerCase());
-      setAddInput('');
+      setAddInput("");
     }
+    e.preventDefault();
   };
 
   return (
@@ -48,9 +49,10 @@ export default function List({
         <input
           type="text"
           placeholder={inputPlaceholder}
-          onChange={handleChange}
+          onInput={handleChange}
+          value={addInput}
         />
-        <button>Add</button>
+        <button type="submit">Add</button>
       </form>
     </div>
   );

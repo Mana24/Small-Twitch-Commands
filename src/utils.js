@@ -21,6 +21,19 @@ export function storageClear() {
    })
 }
 
+export function log(msg) {
+   console.log("STC: ", msg);
+}
+
+/**
+ * Determins wether a string is a command or not
+ * @param {String} text
+ * @returns {Boolean}
+ */
+export function isCommand(text) {
+   return text && text.trim().startsWith("!");
+}
+
 export const defaultOptions = {
    exemptCommands: [
       { content: "!lurk", id: self.crypto.randomUUID() }
@@ -31,4 +44,13 @@ export const defaultOptions = {
       { content: "streamelements", id: self.crypto.randomUUID() },
       { content: "fossabot", id: self.crypto.randomUUID() },
    ]
+}
+
+export async function storageGetOptionsOrDefault() {
+   const retrivedOptions = await storageGet(null);
+   if (!retrivedOptions || Object.keys(retrivedOptions).length === 0) {
+      log('Empty options, using default');
+      return defaultOptions;
+   }
+   return retrivedOptions;
 }

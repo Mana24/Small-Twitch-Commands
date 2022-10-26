@@ -5,6 +5,7 @@ import babel from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import alias from '@rollup/plugin-alias';
 
+const production = !process.env.ROLLUP_WATCH;
 
 export default defineConfig([{
    input: "src/content/content-script.js",
@@ -28,7 +29,8 @@ export default defineConfig([{
    output: {
       file: "dist/options.js",
       format: 'iife',
-      assetFileNames: "[name][extname]"
+      assetFileNames: "[name][extname]",
+      sourcemap: !production
    },
    plugins: [
       alias({
@@ -42,7 +44,7 @@ export default defineConfig([{
       resolve({ browser: true, extensions: ['.js', '.mjs', '.jsx', '.json', '.node'] }),
       babel({
          babelHelpers: 'bundled',
-         exclude: 'node_modules/**',
+         exclude: 'node_modules/**'
       }),
       styles({ mode: ['extract', 'option-styles.css'] }),
       copy({ targets: [{ src: 'src/options/options.html', dest: 'dist' }] })

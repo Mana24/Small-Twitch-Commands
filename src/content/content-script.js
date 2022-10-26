@@ -1,21 +1,9 @@
 import '../../styles/content-styles.css';
-import { defaultOptions, storageGet } from '../utils.js';
-
-function log(msg) {
-  console.log("STC: ", msg);
-}
+import { storageGetOptionsOrDefault, log, isCommand } from '../utils.js';
 
 let smallifyUsersList = [];
 let exemptCommandsList = [];
 
-/**
- * Determins wether a string is a command or not
- * @param {String} text
- * @returns {Boolean}
- */
-function isCommand(text) {
-  return text && text.trim().startsWith("!");
-}
 
 /**
  * 
@@ -34,7 +22,7 @@ function isExemptCommand(text, exemptCommands) {
  * @param {Array} smallUsers
  * @returns {Boolean}
  */
-function isSmallifiedUserList(node, smallUsers) {
+function isSmallifiedUser(node, smallUsers) {
   const userNameNode = node.querySelector(".chat-author__display-name");
   if (!userNameNode) return false;
 
@@ -48,10 +36,10 @@ log("Started");
 /**
  * @param {Node} node
  */
-processNewMessageNode = (node) => {
+const processNewMessageNode = (node) => {
   // log(node.querySelector('.message')?.textContent)
   // log(node.attributes)
-  if (isSmallifiedUserList(node, smallifyUsersList)) {
+  if (isSmallifiedUser(node, smallifyUsersList)) {
     log("Always small user detected");
     node.classList.add("SC-small");
     return;
@@ -95,7 +83,8 @@ const onObserve = (records) => {
 const observer = new MutationObserver(onObserve);
 
 window.addEventListener("load", async () => {
-  const options = (await storageGet(null)) || defaultOptions;
+  const options = await storageGetOptionsOrDefault();
+  //log(options);
 
   smallifyUsersList = options.smallUsers.map(item => item.content);
   exemptCommandsList = options.exemptCommands.map(item => item.content);

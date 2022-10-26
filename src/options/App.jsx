@@ -1,23 +1,16 @@
-import { defaultOptions, storageGet } from "../utils.js";
+import { defaultOptions, storageGet, storageSet } from "../utils.js";
 import { useState, useEffect } from "preact/hooks";
 import List from "./List.jsx";
+import { useOptions } from "../hooks/useOptions.js";
 
 export default function App() {
-  const [loading, setLoading] = useState(true);
-  const [options, setOptions] = useState(null);
-
-  useEffect(async () => {
-    // const retrivedOptions = (await storageGet(null)) || defaultOptions;
-    const retrivedOptions = defaultOptions; // For testing only
-    console.log(retrivedOptions);
-    setOptions(retrivedOptions);
-    setLoading(false);
-  }, []);
+  const { options, optionsLoading, addItem, removeItem, restoreOptions } =
+    useOptions();
 
   return (
     <div className="main-options">
       <h1 class="title">Small Twitch Commands Options</h1>
-      {loading ? (
+      {optionsLoading ? (
         <div>Loading...</div>
       ) : (
         <div class="lists">
@@ -33,6 +26,12 @@ export default function App() {
               </>
             }
             inputPlaceholder={"Example: NightBot"}
+            addItem={(content) => {
+              addItem("smallUsers", content);
+            }}
+            removeItem={(itemId) => {
+              removeItem("smallUsers", itemId);
+            }}
           />
           <List
             items={options.exemptCommands}
@@ -46,11 +45,19 @@ export default function App() {
               </>
             }
             inputPlaceholder={"Example: !lurk"}
+            addItem={(content) => {
+              addItem("exemptCommands", content);
+            }}
+            removeItem={(itemId) => {
+              removeItem("exemptCommands", itemId);
+            }}
           />
         </div>
       )}
       <div class="main-controls">
-        <button id="restore">Restore</button>
+        <button id="restore" onClick={restoreOptions}>
+          Restore
+        </button>
         {/* <button id="debug">Debug</button>
         <button id="clear">Clear</button> */}
       </div>
