@@ -1,0 +1,24 @@
+{
+  "scripts": {
+    "clean-up": "rimraf dist/*",
+    "build": "npm run clean-up && rollup --config",
+    "build-watch":"npm run clean-up && rollup --config --watch"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-jsx": "^7.18.6",
+    "@babel/plugin-transform-react-jsx": "^7.19.0",
+    "@babel/preset-env": "^7.19.4",
+    "@babel/preset-react": "^7.18.6",
+    "@rollup/plugin-alias": "^4.0.2",
+    "@rollup/plugin-babel": "^6.0.2",
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^3.2.3",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-styles": "^4.0.0"
+  },
+  "dependencies": {
+    "preact": "^10.11.2"
+  }
+}

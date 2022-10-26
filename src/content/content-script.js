@@ -1,15 +1,12 @@
+import '../../styles/content-styles.css';
+import { defaultOptions, storageGet } from '../utils.js';
+
 function log(msg) {
   console.log("STC: ", msg);
 }
 
-let SmallifyUsersList = [];
+let smallifyUsersList = [];
 let exemptCommandsList = [];
-
-function storageGet(keys) {
-  return new Promise((resolve, reject) => {
-     chrome.storage.sync.get(keys, resolve);
-  })
-}
 
 /**
  * Determins wether a string is a command or not
@@ -42,7 +39,7 @@ function isSmallifiedUserList(node, smallUsers) {
   if (!userNameNode) return false;
 
   const userName = userNameNode.textContent.trim().toLowerCase();
-  
+
   return smallUsers.includes(userName);
 }
 
@@ -54,7 +51,7 @@ log("Started");
 processNewMessageNode = (node) => {
   // log(node.querySelector('.message')?.textContent)
   // log(node.attributes)
-  if (isSmallifiedUserList(node, SmallifyUsersList)) {
+  if (isSmallifiedUserList(node, smallifyUsersList)) {
     log("Always small user detected");
     node.classList.add("SC-small");
     return;
@@ -66,7 +63,7 @@ processNewMessageNode = (node) => {
   if (isCommand(messageContent)) {
     log("chat command detected");
     if (isExemptCommand(messageContent, exemptCommandsList)) {
-      log ("it's an exempt command");
+      log("it's an exempt command");
       return;
     }
     node.classList.add("SC-small");
@@ -83,7 +80,7 @@ const onObserve = (records) => {
     record.addedNodes?.forEach((node) => {
       // log(node.querySelector('.vod-message'));
       if (!node.querySelector) return;
-      
+
       // This looks really ugly. I am sorry.
       // If querySelector-ing a node could catch itself this would look
       // way more elegant
@@ -98,10 +95,10 @@ const onObserve = (records) => {
 const observer = new MutationObserver(onObserve);
 
 window.addEventListener("load", async () => {
-  const options = await storageGet();
+  const options = (await storageGet(null)) || defaultOptions;
 
-  SmallifyUsersList = options.smallUsers?.map(item => item.content) || [];
-  exemptCommandsList = options.exemptCommands?.map(item => item.content) || [];
+  smallifyUsersList = options.smallUsers.map(item => item.content);
+  exemptCommandsList = options.exemptCommands.map(item => item.content);
 
   observer.observe(document.body, {
     childList: true,

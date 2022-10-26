@@ -11,6 +11,8 @@
 //
 //
 
+import { storageClear, storageGet, storageGetSingle, storageSet } from '../utils.js'
+
 function addListItem(content, parent, onRemove) {
 	const li = document.createElement("li");
 	li.classList.add("list-item");
