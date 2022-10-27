@@ -28,7 +28,8 @@ button {
 }
 
 .main-options {
-   width: max(60vw, 33rem);
+   width: clamp(60vw, 55rem, 100%);
+   margin: auto;
 }
 
 .main-controls {
@@ -65,7 +66,7 @@ button {
 
       input {
          background-color: rgb(22, 22, 22);
-         color: white
+         color: white;
       }
    }
 
@@ -75,7 +76,7 @@ button {
       justify-content: space-between;
       border: rgba(255, 255, 255, 0.4) solid 0.1em;
       padding-inline-start: 0.4em;
-      height: 3em;
+      height: 2.5em;
 
       &-content {
          font-size: 0.9rem;
@@ -95,7 +96,14 @@ button {
    }
 }
 
-@media (max-width: 37rem) {
+@media (max-width: 38rem) {
+   .main-options {
+      width: 100%;
+   }
+   .lists {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(6, auto);
+   }
 
    .list-container {
       min-height: 15rem;
