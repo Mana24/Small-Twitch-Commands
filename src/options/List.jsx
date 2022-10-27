@@ -3,9 +3,9 @@ import { log } from "../utils.js";
 
 export function ListItem({ content, remove }) {
   return (
-    <li class="list-item">
-      <p class="list-item-content">{content}</p>
-      <button class="list-item-remove" onClick={remove}>
+    <li className="list-item">
+      <p className="list-item-content">{content}</p>
+      <button className="list-item-remove" onClick={remove}>
         X
       </button>
     </li>
@@ -33,10 +33,12 @@ export default function List({
   };
 
   return (
-    <div class="list-container" id="smallUsers">
-      <h2 class="list-title">{title}</h2>
-      <p class="list-description">{description}</p>
-      <ul class="list">
+    <div className="list-container" id="smallUsers">
+      <div className="list-info-container">
+        <h2 className="list-title">{title}</h2>
+        <p className="list-description">{description}</p>
+      </div>
+      <ul className="list">
         {items.map((item) => (
           <ListItem
             content={item.content}
@@ -45,7 +47,7 @@ export default function List({
           />
         ))}
       </ul>
-      <form class="list-controls" onSubmit={handleSubmit}>
+      <form className="list-controls" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder={inputPlaceholder}

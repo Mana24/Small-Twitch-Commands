@@ -9,7 +9,7 @@ export default function App() {
 
   return (
     <div className="main-options">
-      <h1 class="title">Small Twitch Commands Options</h1>
+      <h1 className="title">Small Twitch Commands Options</h1>
       {optionsLoading ? (
         <div>Loading...</div>
       ) : (
@@ -54,7 +54,7 @@ export default function App() {
           />
         </div>
       )}
-      <div class="main-controls">
+      <div className="main-controls">
         <button id="restore" onClick={restoreOptions}>
           Restore
         </button>

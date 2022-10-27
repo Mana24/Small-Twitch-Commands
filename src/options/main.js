@@ -1,4 +1,4 @@
-import '../../styles/option-styles.css';
+import '../../styles/option-styles.scss';
 import { h, render } from 'preact';
 import App from './App.jsx';
 
