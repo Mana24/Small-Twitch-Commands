@@ -36,6 +36,11 @@ button {
    margin-top: 1em;
 }
 
+.option-controls {
+   display: flex;
+   align-items: center;
+}
+
 .title {
    text-align: center;
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "preact/hooks";
-import { storageSet, storageGetOptionsOrDefault, log } from "../utils.js";
+import { storageSet, storageGetOptionsOrDefault, log, defaultOptions } from "../utils.js";
 
-export const useOptions = () => {
+export const useOptions = (onOptionsRetrived) => {
    const [optionsLoading, setOptionsLoading] = useState(true);
    const [options, setOptions] = useState(null);
    const [unmodifiedOptions, setUnmodifiedOptions] = useState(null);
@@ -14,6 +14,7 @@ export const useOptions = () => {
       setOptions(retrivedOptions);
       setUnmodifiedOptions(retrivedOptions);
       setOptionsLoading(false);
+      onOptionsRetrived && onOptionsRetrived(retrivedOptions);
    }, []);
 
    // ON OPTIONS UPDATE
@@ -43,6 +44,13 @@ export const useOptions = () => {
       })
    }
 
+   const setScale = (scale) => {
+      setOptions((options) => ({
+         ...options,
+         scale
+      }))
+   }
+
    const restoreOptions = () => setOptions(unmodifiedOptions);
 
    return {
@@ -51,6 +59,7 @@ export const useOptions = () => {
       optionsLoading,
       addItem,
       removeItem,
-      restoreOptions
+      restoreOptions,
+      setScale
    };
 }

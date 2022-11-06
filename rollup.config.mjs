@@ -4,6 +4,7 @@ import copy from "rollup-plugin-copy";
 import babel from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import alias from '@rollup/plugin-alias';
+import commonjs from '@rollup/plugin-commonjs';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -42,6 +43,7 @@ export default defineConfig([{
          ]
       }),
       resolve({ browser: true, extensions: ['.js', '.mjs', '.jsx', '.json', '.node'] }),
+      commonjs(),
       babel({
          babelHelpers: 'bundled',
          exclude: 'node_modules/**'

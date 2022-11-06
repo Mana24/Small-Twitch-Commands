@@ -85,6 +85,7 @@ const observer = new MutationObserver(onObserve);
 window.addEventListener("load", async () => {
   const options = await storageGetOptionsOrDefault();
   //log(options);
+  document.body.style.setProperty('--command-scale', options.scale);
 
   smallifyUsersList = options.smallUsers.map(item => item.content);
   exemptCommandsList = options.exemptCommands.map(item => item.content);

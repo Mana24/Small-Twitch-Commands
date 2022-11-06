@@ -1,7 +1,8 @@
+export const browser = chrome;
 
 export function storageGet(keys) {
    return new Promise((resolve, reject) => {
-      chrome.storage.sync.get(keys, resolve);
+      browser.storage.sync.get(keys, resolve);
    })
 }
 
@@ -10,14 +11,15 @@ export async function storageGetSingle(key) {
 }
 
 export function storageSet(keyValuePair) {
+   log('updating storage');
    return new Promise((resolve, reject) => {
-      chrome.storage.sync.set(keyValuePair, resolve)
+      browser.storage.sync.set(keyValuePair, resolve)
    })
 }
 
 export function storageClear() {
    return new Promise((resolve, reject) => {
-      chrome.storage.sync.clear(resolve);
+      browser.storage.sync.clear(resolve);
    })
 }
 
@@ -43,7 +45,8 @@ export const defaultOptions = {
       { content: "boggitbot", id: self.crypto.randomUUID() },
       { content: "streamelements", id: self.crypto.randomUUID() },
       { content: "fossabot", id: self.crypto.randomUUID() },
-   ]
+   ],
+   scale: '0.8'
 }
 
 export async function storageGetOptionsOrDefault() {
