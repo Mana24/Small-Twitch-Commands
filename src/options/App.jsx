@@ -2,6 +2,7 @@ import { useEffect, useState } from "preact/hooks";
 import List from "./List.jsx";
 import { useOptions } from "../hooks/useOptions.js";
 import { defaultOptions } from "../utils.js";
+import githubLogo from '../../assets/iconmonstr-github-1.svg'
 
 export default function App() {
   const [scaleInputValue, setScaleInputValue] = useState(null);
@@ -106,6 +107,13 @@ export default function App() {
         {/* <button id="debug">Debug</button>
         <button id="clear">Clear</button> */}
       </div>
+      <a
+        className="repo-link"
+        href="https://github.com/Mana24/Small-Twitch-Commands"
+      >
+        <img className="github-icon" src={githubLogo}></img>
+        <p>Github</p>
+      </a>
     </div>
   );
 }

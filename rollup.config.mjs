@@ -5,6 +5,7 @@ import babel from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import alias from '@rollup/plugin-alias';
 import commonjs from '@rollup/plugin-commonjs';
+import image from '@rollup/plugin-image';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -55,6 +56,7 @@ export default defineConfig([
             exclude: 'node_modules/**'
          }),
          styles({ mode: ['extract', 'option-styles.css'] }),
-         copy({ targets: [{ src: 'src/options/options.html', dest: ['dist/v3', 'dist/v2'] }] })
+         copy({ targets: [{ src: 'src/options/options.html', dest: ['dist/v3', 'dist/v2'] }] }),
+         image()
       ]
    }])
