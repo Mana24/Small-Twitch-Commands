@@ -6,7 +6,7 @@ const optionsPage = manifestV3.options_page;
 const manifestV2 = {
    ...manifestV3, manifest_version: 2, "browser_specific_settings": {
       "gecko": {
-         "id": "manafakeemail@fakeness.com",
+         "id": "smalltwitchcommands@mana24.com",
       }
    }
 };
