@@ -1,5 +1,5 @@
 import '../../styles/content-styles.css';
-import { storageGetOptionsOrDefault, log, isCommand } from '../utils.js';
+import { storageGetOptionsOrDefault, log, isCommand, browserCurrent } from '../utils.js';
 
 let smallifyUsersList = [];
 let exemptCommandsList = [];
@@ -84,12 +84,24 @@ const observer = new MutationObserver(onObserve);
 
 const main = async () => {
   const options = await storageGetOptionsOrDefault();
+
   //log(options);
 
   document.body.style.setProperty('--command-scale', options.scale);
-
   smallifyUsersList = options.smallUsers.map(item => item.content);
   exemptCommandsList = options.exemptCommands.map(item => item.content);
+
+  browserCurrent.storage.onChanged.addListener((changes, areaName) => {
+    if (changes.scale) {
+      document.body.style.setProperty('--command-scale', changes.scale.newValue);
+    }
+    if (changes.exemptCommands) {
+      exemptCommandsList = changes.exemptCommands.newValue.map(item => item.content);
+    }
+    if (changes.smallUsers) {
+      smallifyUsersList = changes.smallUsers.newValue.map(item => item.content);
+    }
+  })
 
   observer.observe(document.body, {
     childList: true,

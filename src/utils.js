@@ -1,4 +1,4 @@
-let browserCurrent = typeof browser !== "undefined" ? browser : chrome;
+export const browserCurrent = typeof browser !== "undefined" ? browser : chrome;
 
 export function storageGet(keys) {
    return new Promise((resolve, reject) => {
