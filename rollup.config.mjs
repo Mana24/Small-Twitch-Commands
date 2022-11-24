@@ -15,7 +15,7 @@ const contentScriptConfig = (manifestFile, outputFolder) => ({
       file: `${outputFolder}/content-script.js`,
       format: 'iife',
       assetFileNames: "[name][extname]",
-      sourcemap: !production
+      sourcemap: true
    },
    plugins: [
       styles({ mode: ['extract', 'content-styles.css'] }),
@@ -31,7 +31,7 @@ const optionsPageOutput = (outputFolder) => ({
    file: `${outputFolder}/options.js`,
    format: 'iife',
    assetFileNames: "[name][extname]",
-   sourcemap: !production
+   sourcemap: true
 })
 
 export default defineConfig([
