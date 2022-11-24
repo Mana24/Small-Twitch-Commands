@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-// Just changing manifest_version from 3 to 2 for now. It could look different in the future
 const manifestV3 = JSON.parse(fs.readFileSync(path.join(__dirname, '../manifest.json')));
 const optionsPage = manifestV3.options_page;
 const manifestV2 = {

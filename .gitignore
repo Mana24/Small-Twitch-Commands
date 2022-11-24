@@ -2,3 +2,4 @@
 /dist
 manifest.v2.json
 manifest.v3.json
+*.zip

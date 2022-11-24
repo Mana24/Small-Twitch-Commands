@@ -1,8 +1,14 @@
 {
+  "name": "small-twitch-commands",
+  "version": "1.1",
+  "author": "Mana",
+  "license": "MIT",
   "scripts": {
     "clean-up": "rimraf dist/*",
+    "zip-v2": "zip-build dist/v2 . -o -t \"%NAME%_%VERSION%.%EXT%\"",
     "build_manifests": "node build/buildManifests.js",
     "build": "npm run build_manifests && npm run clean-up && rollup --config",
+    "build-zip":"npm run build && npm run zip-v2",
     "build-watch": "npm run build_manifests && npm run clean-up && rollup --config --watch"
   },
   "devDependencies": {
@@ -19,7 +25,8 @@
     "rollup": "^3.2.3",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-styles": "^4.0.0",
-    "sass": "^1.55.0"
+    "sass": "^1.55.0",
+    "zip-build": "^1.8.0"
   },
   "dependencies": {
     "preact": "^10.11.2"
