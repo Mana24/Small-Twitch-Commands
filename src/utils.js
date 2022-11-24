@@ -1,8 +1,8 @@
-export const browser = chrome;
+let browserCurrent = typeof browser !== "undefined" ? browser : chrome;
 
 export function storageGet(keys) {
    return new Promise((resolve, reject) => {
-      browser.storage.sync.get(keys, resolve);
+      browserCurrent.storage.sync.get(keys, resolve);
    })
 }
 
@@ -13,13 +13,13 @@ export async function storageGetSingle(key) {
 export function storageSet(keyValuePair) {
    log('updating storage');
    return new Promise((resolve, reject) => {
-      browser.storage.sync.set(keyValuePair, resolve)
+      browserCurrent.storage.sync.set(keyValuePair, resolve)
    })
 }
 
 export function storageClear() {
    return new Promise((resolve, reject) => {
-      browser.storage.sync.clear(resolve);
+      browserCurrent.storage.sync.clear(resolve);
    })
 }
 

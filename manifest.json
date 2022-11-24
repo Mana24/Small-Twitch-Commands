@@ -1,7 +1,7 @@
 {
   "name": "Small Twitch Commands",
   "description": "Makes chat commands smaller and take up less space",
-  "version": "1.0",
+  "version": "1.1",
   "manifest_version": 3,
   "content_scripts": [
     {

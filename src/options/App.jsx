@@ -35,7 +35,7 @@ export default function App() {
           <div class="lists">
             <List
               items={options.smallUsers}
-              title={"Always small users"}
+              title={"Always Small Users"}
               description={
                 <>
                   Users in this list will have all their messages smallified.

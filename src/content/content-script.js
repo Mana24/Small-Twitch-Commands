@@ -63,7 +63,6 @@ const processNewMessageNode = (node) => {
  */
 const onObserve = (records) => {
   //   log(records.length);
-  //   records.forEach(record => record.addedNodes?.forEach((node) => log(node.classList?.contains('chat-line__message'))))
   records.forEach((record) => {
     record.addedNodes?.forEach((node) => {
       // log(node.querySelector('.vod-message'));
@@ -82,9 +81,11 @@ const onObserve = (records) => {
 
 const observer = new MutationObserver(onObserve);
 
-window.addEventListener("load", async () => {
+
+const main = async () => {
   const options = await storageGetOptionsOrDefault();
   //log(options);
+
   document.body.style.setProperty('--command-scale', options.scale);
 
   smallifyUsersList = options.smallUsers.map(item => item.content);
@@ -96,4 +97,6 @@ window.addEventListener("load", async () => {
     attributes: false,
   });
   log("Observer started");
-});
+};
+
+main();
