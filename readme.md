@@ -17,9 +17,11 @@ It can also make all messages by specified users smaller and less distracting
 ![live chat preview](https://imgur.com/Du8A5j4.png)
 ![vod chat preview](https://imgur.com/JND8Xmh.png)
 
-## Download it
+## Download Links
 * For Firefox: [Firefox Browser Add-ons](https://addons.mozilla.org/en-US/firefox/addon/manas-small-twitch-commands/)
-* For Chrome-based browsers: Link coming soon! You can install it anyway using the manual method if you're so inclined.
+* For Chrome-based browsers: [Chrome Web Store](https://chrome.google.com/webstore/detail/small-twitch-commands/mflkiinfjlaondfngcnggpljahglcmko)
+
+NOTE: Make sure to uninstall the manually installed version if you've installed it before so you can get automatic updates and no conflicts. 
 
 ## Manual Installation
 Tested for Chrome and Edge
