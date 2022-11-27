@@ -1,6 +1,6 @@
 {
   "name": "small-twitch-commands",
-  "version": "1.1",
+  "version": "1.1.1",
   "author": "Mana",
   "license": "MIT",
   "scripts": {
@@ -11,6 +11,7 @@
     "build": "npm run build_manifests && npm run clean-up && rollup --config",
     "build-zip-v2":"npm run build && npm run zip-v2",
     "build-zip-v3":"npm run build && npm run zip-v3",
+    "build-zip":"npm run build && npm run zip-v2 && npm run zip-v3",
     "build-watch": "npm run build_manifests && npm run clean-up && rollup --config --watch"
   },
   "devDependencies": {
