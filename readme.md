@@ -37,12 +37,12 @@ Tested using Windows 10, Node v18.6.0, and NPM 9.1.1
 
 ```Shell
 npm install --force
-npm run build
+npm run build-zip
 ```
 
-You should end up with manifest v2 and manifest v3 builds in the dist directory.
+You should end up with manifest v2 and manifest v3 builds zipped in the dist directory.
 
 
-## Acknowledgments 
+## Acknowledgments & Credits
 
-[SerBoggit](https://www.twitch.tv/serboggit): Thanks to SerBoggit for the idea and the last example picture
+[SerBoggit](https://www.twitch.tv/serboggit): Thanks to SerBoggit for the idea, the extension icon, and the last example picture
