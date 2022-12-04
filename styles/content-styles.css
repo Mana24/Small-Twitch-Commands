@@ -1,5 +1,5 @@
 :root {
-   --command-scale: 0.8
+   --command-scale: 0.8;
 }
 
 /* Specificity wars are a pain but this trick helps. (Repeating the class name) */
@@ -10,7 +10,17 @@
    padding-bottom: 0.2rem;
 }
 
-.SC-small .chat-line__message--badges > *, .SC-small .chat-badge {
-   transform: scale(var(--command-scale));
+/* Smallify Emotes */
+/* The positioning isn't quite right when used with FFZ's implementation
+   of zero-width emotes, but it's passable at non-extreme sizes
+*/
+.SC-small img {
+   scale: min(var(--command-scale), 1);
+}
+
+/* Smallify Badges */
+.SC-small .chat-line__message--badges > *,
+.SC-small .chat-badge {
+   transform: scale(min(var(--command-scale), 1.1)); 
    transform-origin: left;
 }
