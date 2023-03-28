@@ -68,7 +68,7 @@ const onObserve = (records) => {
     // log(record.type);
     record.addedNodes?.forEach((node) => {
       // log(node.querySelector('.vod-message'));
-      log(node);
+      // log(node);
       if (!node.querySelector) return;
 
       // This looks really ugly. I am sorry.
