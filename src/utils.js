@@ -23,8 +23,8 @@ export function storageClear() {
    })
 }
 
-export function log(msg) {
-   console.log("STC: ", msg);
+export function log(...msg) {
+   console.log("STC: ", ...msg);
 }
 
 /**

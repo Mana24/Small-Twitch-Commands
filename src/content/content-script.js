@@ -23,7 +23,7 @@ function isExemptCommand(text, exemptCommands) {
  * @returns {Boolean}
  */
 function isSmallifiedUser(node, smallUsers) {
-  const userNameNode = node.querySelector(".chat-author__display-name");
+  const userNameNode = node.querySelector(".chat-author__display-name, .seventv-chat-user-username");
   if (!userNameNode) return false;
 
   const userName = userNameNode.textContent.trim().toLowerCase();
@@ -37,6 +37,7 @@ log("Started");
  * @param {Node} node
  */
 const processNewMessageNode = (node) => {
+  // log(node)
   // log(node.querySelector('.message')?.textContent)
   // log(node.attributes)
   if (isSmallifiedUser(node, smallifyUsersList)) {
@@ -45,7 +46,7 @@ const processNewMessageNode = (node) => {
     return;
   }
 
-  const messageContent = node.querySelector(".text-fragment:first-child")?.textContent;
+  const messageContent = node.querySelector(".text-fragment:first-child, .seventv-chat-message-body")?.textContent;
   // log("message content: " + messageContent);
 
   if (isCommand(messageContent)) {
@@ -64,15 +65,17 @@ const processNewMessageNode = (node) => {
 const onObserve = (records) => {
   //   log(records.length);
   records.forEach((record) => {
+    // log(record.type);
     record.addedNodes?.forEach((node) => {
       // log(node.querySelector('.vod-message'));
+      log(node);
       if (!node.querySelector) return;
 
       // This looks really ugly. I am sorry.
       // If querySelector-ing a node could catch itself this would look
       // way more elegant
       let messageNode =
-        node.querySelector(".vod-message") ||
+        node.querySelector(".vod-message, .seventv-chat-message-container, .seventv-user-message") ||
         (node.classList?.contains("chat-line__message") ? node : undefined);
       if (messageNode) processNewMessageNode(messageNode);
     });
